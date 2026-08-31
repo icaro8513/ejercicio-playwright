@@ -52,7 +52,19 @@ public class BaseTest {
                         .setSlowMo(ejecutandoEnCI ? 0 : 300)
         );
 
-        context = browser.newContext();
+        Path videoDirectory = Paths.get(
+                "build",
+                "artifacts",
+                "videos"
+        );
+
+        Files.createDirectories(videoDirectory);
+
+        context = browser.newContext(
+                new Browser.NewContextOptions()
+                        .setRecordVideoDir(videoDirectory)
+                        .setRecordVideoSize(1280, 720)
+        );
 
         context.tracing().start(
                 new Tracing.StartOptions()
