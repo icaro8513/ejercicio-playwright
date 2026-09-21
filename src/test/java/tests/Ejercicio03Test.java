@@ -12,6 +12,12 @@ public class Ejercicio03Test extends BaseTest {
 
         // 2. Buscamos el enlace por el texto visible
         // y hacemos clic sobre él.
-        page.getByText("More information...").click();
+        // Buscamos el enlace "Ofertas" y hacemos clic.
+        page.getByRole(
+                com.microsoft.playwright.options.AriaRole.LINK,
+                new com.microsoft.playwright.Page.GetByRoleOptions()
+                        .setName("Ofertas")
+                        .setExact(true)
+        ).click();
     }
 }
